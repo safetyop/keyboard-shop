@@ -12,3 +12,18 @@ function carousel() {
   x[slideIndex-1].style.display = "block";
   setTimeout(carousel, 2000); // Change image every 2 seconds
 }
+let lastScrollTop = 0;
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        // Scroll Down
+        header.style.top = "-60px"; // ซ่อน header เมื่อเลื่อนลง
+    } else {
+        // Scroll Up
+        header.style.top = "0"; // แสดง header เมื่อเลื่อนขึ้น
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
